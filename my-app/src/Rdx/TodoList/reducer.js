@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { REMOVE_TODO_ITEM, ADD_TODO_ITEM, EDIT_TODO_ITEM, ADD_ITEM_STATUS, SORT_BY_SATUS, SORT_TODO_ELEMENTS } from './action';
-import {sortAsc, sortDesc, addFilterIfNotExists, removeFilter } from '../../Utils/elementsUtils';
+import { REMOVE_TODO_ITEM, ADD_TODO_ITEM, EDIT_TODO_ITEM, ADD_ITEM_STATUS} from './action';
 
 const initialState = {
     data: [
@@ -56,17 +55,6 @@ const initialState = {
               return{
                 ...state,
                 status: action.status,
-              }
-            case SORT_BY_SATUS:
-              sortAsc(state.data, 'itemStatus') 
-              return {...state,
-                data: [...state.data]
-              }
-            case SORT_TODO_ELEMENTS:
-              sortAsc(state.data, action.payload)
-              return{
-                ...state,
-                data: [...state.data]
               }
       default:
         return state;

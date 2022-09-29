@@ -1,7 +1,6 @@
 import React, {useCallback, useMemo} from "react";
 import PropTypes from 'prop-types';
-import {Box,Card,CardActions,CardContent,Button,Typography,} from '@mui/material/';
-import { purple, red } from '@mui/material/colors';
+import {Card,CardActions,CardContent,Button,Typography,} from '@mui/material/';
 
 import '../TodoElement/TodoElement.css'
 
@@ -50,32 +49,9 @@ const onEditClick = useCallback(() => {
       </CardActions>
     </Card>
       
-        /* <div  className="element">
-        <div className="elementsContainer">
-          
-          
-         
-          
-          
-          
-        </div>
-        <div className="buttonContainer">
-          <button onClick={onRemoveClick} >Remove</button>
-          <button onClick={onEditClick}>Edit</button>
-        </div>
-      </div> */
     )
 }
 
-
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
 
 
 

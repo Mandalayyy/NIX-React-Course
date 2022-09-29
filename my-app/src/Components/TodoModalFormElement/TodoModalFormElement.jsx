@@ -59,7 +59,7 @@ export const TodoModalFormElement = () => {
 
       const onStatusChange = useCallback((e) => {
         dispatch(addItemStatus(e.target.value));
-      })
+      },[dispatch])
 
       const onSaveClick = useCallback(() => {
         if (element) {
