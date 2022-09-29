@@ -1,21 +1,21 @@
 import './App.css';
+import { Routes, Route, Outlet, Link } from "react-router-dom";
 import {TodoElementsList} from './Components/TodoElementsList/TodoElementsList';
 import {TodoModalFormElement} from './Components/TodoModalFormElement/TodoModalFormElement';
-import { selectIsModalFormVisable } from "../src/Rdx/App/selector";
-import {useSelector} from 'react-redux';
 import { TodoSortElement } from './Components/TodoSortElement/TodoSortElement';
-
+import { WelcomePage } from './Components/WelcomePage/WelcomePage';
 
 export const App = () => {
-
-  const isModalFormVisable = useSelector(selectIsModalFormVisable)
-
   return (
     
     <div className="App">
-      <TodoSortElement />
-      <TodoElementsList />
-     {isModalFormVisable ? < TodoModalFormElement />: null } 
+            < TodoSortElement/>
+      <Routes>
+        <Route path='*' element={<WelcomePage/>}/>
+        <Route path='app' element={<TodoElementsList/>}/>
+      </Routes> 
+
+     < TodoModalFormElement />
     </div>
   );
 }

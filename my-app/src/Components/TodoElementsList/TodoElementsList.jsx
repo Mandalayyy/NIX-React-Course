@@ -9,6 +9,7 @@ import '../TodoElementsList/TodoElementsList.css';
 import { removeTodoItem } from "../../Rdx/TodoList/action";
 import { showModalForm } from "../../Rdx/App/actions";
 import { useEffect } from "react";
+import { requestGoods } from "../Services/goodsService";
 
 
 export const TodoElementsList = () => {
@@ -19,11 +20,11 @@ export const TodoElementsList = () => {
         if(storeCards){
             setCards(cards)
         }
-    }, [storeCards])
+    }, [storeCards, cards])
 
     const onRemoveElement = useCallback((id)=>{
         dispatch(removeTodoItem(id));
-    })
+    },[dispatch])
 
     const onEditElement = useCallback((id) =>{
         dispatch(showModalForm(id))
@@ -32,6 +33,12 @@ export const TodoElementsList = () => {
     const onAddClick = useCallback(() =>{
         dispatch(showModalForm());
     }, [dispatch])
+
+    useEffect(() => {
+        requestGoods().then((response) => {
+                console.log('Response', response)
+        })
+    },[])
 
     return(
         <div className="elementList">

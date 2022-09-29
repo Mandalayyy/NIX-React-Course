@@ -1,19 +1,21 @@
-import React, {useCallback, useEffect} from "react";
-import { selectToDoData } from "../../Rdx/TodoList/selector";
-import { useSelector, useDispatch } from "react-redux";
-import { sortTodoElements } from "../../Rdx/TodoList/action";
+import React, { useState, useMemo} from "react";
+import { useSelector } from "react-redux";
 import {InputLabel,MenuItem,FormControl,Select} from '@mui/material/';
+import { selectToDoData } from "../../Rdx/TodoList/selector";
+import {sortAsc} from '../../Utils/elementsUtils'
 
 export const TodoSortElement = () => {
-    const dispatch = useDispatch();
     const data = useSelector(selectToDoData)
+    const [field, setField] = useState('');
 
-
-         
- const sortTodoEl = useCallback((e) => {
-    dispatch(sortTodoElements(e.target.value));
-    console.log(e.target.value);
- },[dispatch,sortTodoElements]) 
+   const sortTodoEl = useMemo((e) => {
+      if(data){
+        sortAsc(data, field)
+        console.log('render')
+        console.log(data);
+        return {...data};
+      }
+    },[data, field]);
 
     return(
         <div>
@@ -22,7 +24,7 @@ export const TodoSortElement = () => {
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          onChange={e => {sortTodoEl(e)}}
+          onChange={e => {setField(e.target.value)}}
           label="Sort"
           defaultValue={''}
         >
