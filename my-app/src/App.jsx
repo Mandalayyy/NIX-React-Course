@@ -1,21 +1,22 @@
 import './App.css';
-import { Routes, Route, Outlet, Link } from "react-router-dom";
-import {TodoElementsList} from './Components/TodoElementsList/TodoElementsList';
-import {TodoModalFormElement} from './Components/TodoModalFormElement/TodoModalFormElement';
-import { TodoSortElement } from './Components/TodoSortElement/TodoSortElement';
+import { Routes, Route} from "react-router-dom";
 import { WelcomePage } from './Components/WelcomePage/WelcomePage';
+import { DashboardPage } from './Components/DashboardPage/DashboardPage';
+import { GoodsForm } from './Components/GoodsForm/GoodsForm';
+
+import '../src/App.css' 
 
 export const App = () => {
   return (
     
     <div className="App">
-            < TodoSortElement/>
       <Routes>
         <Route path='*' element={<WelcomePage/>}/>
-        <Route path='app' element={<TodoElementsList/>}/>
+        <Route path='/app' element={<DashboardPage />}>
+        <Route path='edit' element={<GoodsForm />} />
+        </Route>
+        
       </Routes> 
-
-     < TodoModalFormElement />
     </div>
   );
 }
