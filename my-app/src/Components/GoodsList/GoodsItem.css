@@ -1,0 +1,22 @@
+.elementRow {
+    background-color: lightgray;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .buttonGridItem {
+    display: flex;
+    justify-content: center;
+  }
+
+  .BtnGroup{
+    display: flex;
+  }
+
+  .SortBtn{
+    margin-left: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+  }
